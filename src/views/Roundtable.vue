@@ -1,19 +1,17 @@
 <template>
 
     <div>
-        <div class="special">
-            <h3>全部专题</h3>
+        <div class="roundtable">
+            <h3>圆桌</h3>
         </div>
         <div id="container">
             <div v-for="(item,index) in specials" :key="index">
                 <div id="body">
+                    <div :style="{backgroundImage:'url('+item.banner+')'}" style="width:98%;height:200px;background-repeat: no-repeat;background-attachment: scroll;background-position:-140px -20px;">
                     <h3 id="title">{{ item.title}}</h3>
-                    <img  id="image" :src="item.banner" alt="">
-                    <div id="neirong">
-                        <small>{{item.introduction}}</small>
                     </div>
                 </div>
-                    <p id="fangwen">{{ item.updated.substring(0,10)}} {{item.updated.substring(11,19)}} 更新，{{ item.viewCount }}次浏览</p>
+                <p id="fangwen">该圆桌被浏览{{ item.viewCount }}次</p>
             </div>
         </div>
     </div>
@@ -42,7 +40,7 @@
         background-color: white;
         margin-left: 50px;
         display: inline-grid;
-        grid-template-columns: repeat(2,49%);
+        grid-template-columns: repeat(4,24%);
         grid-row-gap: 10px;
         grid-column-gap: 10px;
         grid-auto-flow: row;
@@ -51,24 +49,15 @@
     #body{
         width: 100%;
         height:170px;
-        border-top: 1px solid silver;
         margin-top: 10px;
     }
     #title{
-        padding-top: 1px;
+        color: white;
+        padding-top: 120px;
         margin-left: 20px;
-    }
-    #image{
-        margin-left: 20px;
-        width:28%;
-        height:68%;
-    }
-    #neirong{
-        margin-left: 41%;
-        margin-top: -117px;
-        width: 50%;
     }
     #fangwen{
         margin-left: 15px;
+        padding-top: 26px;
     }
 </style>

@@ -55,6 +55,10 @@ const routes = [
             {
                 path: 'question/waiting',
                 component: () => import('../views/QuestionWaiting.vue')
+            },{
+                path:'special/roundtable',
+                component: () => import('../views/Roundtable.vue')
+
             }
 
         ]
