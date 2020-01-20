@@ -284,8 +284,6 @@
         background-color: white;
         grid-auto-flow: row;
         justify-items: center;
-
-
     }
 
     #zhoubian {
