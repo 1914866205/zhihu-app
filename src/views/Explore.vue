@@ -52,16 +52,23 @@
                 <span style="margin-left: 12px;font-size: 25px;font-weight: 600;font-synthesis: style;">热门收藏夹</span>
                </div>
             <div class="container">
-                <div v-for="(item,index) in favorite" :key="index">
+                <div v-for="(item,index) in favorited" :key="index">
                     <div class="body">
+                        <h2 class="title">{{ item.title}}</h2>
                         <button class="guanzhu">关注收藏夹</button>
-                        <h3 class="title">{{ item.title}}</h3>
-                        <div class="neirong">
-                            <small>{{item.introduction}}</small>
-                        </div>
-                        <p class="fangwen">{{ item.viewCount }}次浏览 {{item.followersCount}}关注</p>
-                    </div>
+                        <img class="icon" :src="item.creator_avatar">
+                        <h2 class="creator_name">{{item.creator_name}}&nbsp创建</h2>
+                        <h5 class="followers">{{item.followers}}&nbsp人关注</h5>
+                            <h4 class="question_title">{{item.question_title}}</h4>
+                            <h5 class="answer_content">{{item.answer_author_name}}:{{item.answer_content}}</h5>
+                            <h5 class="liuliang">回答 {{item.voteup_count}} 赞同.{{item.comment_count}}评论</h5>
+                            <h4 class="shoucangnum">已收藏{{item.total_count}}条内容&nbsp&nbsp></h4>  </div>
                 </div>
+            </div>
+            <div align="center" style="padding-top: 10px">
+                <button style="border-radius: 25px; height: 62px; background-color: #ffffff; ">
+                    <router-link to="/special/favorite" style="color: #8590a6; font-size: 30px; text-decoration: none;">查看更多收藏 ></router-link>
+                </button>
             </div>
         </div>
 
@@ -75,24 +82,20 @@
         data(){
             return{
                 recommoned:[],
-                favorite:[]
+                favorited:[]
             };
         },created() {
-            this.axios.get('http://localhost:8080/api/special').then(
-                res=>{this.recommoned=res.data.data;})
-        },createdfa() {
-            this.axios.get('http://localhost:8080/api/favorite').then(
-                res=>{this.favorite=res.data.data;})
+            this.axios.get('http://localhost:8080/api/special').then(res=>{
+                this.recommoned=res.data.data["special"];
+                this.favorited=res.data.data["favorite"];
+            });
         }
     }
 </script>
-
-
 <style lang="scss" scoped>
     .container{
         width:90%;
         height:100%;
-        background-color: white;
         margin-left: 75px;
         display: inline-grid;
         grid-template-columns: repeat(2,49%);
@@ -102,6 +105,7 @@
         justify-items: stretch;
     }
     .body{
+        background-color: white;
         width: 100%;
         height:260px;
         border-top: 1px solid silver;
@@ -166,5 +170,49 @@
     .fangwen{
         padding-top: -105px;
         margin-left: 41%;
+    }
+
+
+
+    .title{
+        margin-top: 3px;
+        margin-left: 22px;
+    }
+    .icon{
+        margin-top: 1px;
+        margin-left: 22px;
+    }
+    .creator_name{
+        margin-left:70px;
+        margin-top:-35px;
+    }
+    .followers{
+        margin-left: 200px;
+        margin-top:-37px;
+    }
+    .wenzhang{
+        margin-left: 295px;
+        margin-top: -185px;
+        height: 90%;
+        border-left: solid 1px darkgray;
+    }
+    .question_title{
+        margin-top: 8px;
+        margin-left: 22px;
+    }
+    .answer_content{
+        margin-left: 22px;
+        font-style: oblique;
+        margin-top: 2px;
+        width: 92%;
+        height: 50px;
+    }
+    .liuliang{
+        margin-top: -23px;
+        margin-left: 22px;
+    }
+    .shoucangnum{
+        margin-top: -13px;
+        margin-left: 20px;
     }
 </style>

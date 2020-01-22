@@ -9,6 +9,7 @@ import Follow from '../views/Follow.vue'
 import Hot from '../views/Hot.vue'
 import QuestionWaiting from '../views/QuestionWaiting.vue'
 import Login from '../views/Login.vue'
+import Favorite from '../views/Favorite.vue'
 
 Vue.use(VueRouter)
 
@@ -59,6 +60,9 @@ const routes = [
                 path:'special/roundtable',
                 component: () => import('../views/Roundtable.vue')
 
+            },{
+                path:'special/favorite',
+                component:() => import('../views/Favorite.vue')
             }
 
         ]
