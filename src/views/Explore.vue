@@ -72,8 +72,33 @@
             </div>
         </div>
 
-
+        <div>
+            <div style="padding-left:75px"><svg fill="currentColor" viewBox="0 0 24 24" width="36" height="36" style="color: #0084ff">
+                <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm4.043-15.524a.745.745 0 0 0-1.053.017l-6.857 7.071 2.237 2.17 6.857-7.071a.743.743 0 0 0-.016-1.052l-1.168-1.135zm-9.028 9.476l-.348 1.381 1.37-.39 1.274-.36-1.973-1.916-.323 1.285z" fill-rule="evenodd"></path>            </svg>
+                <span style="margin-left: 12px;font-size: 25px;font-weight: 600;font-synthesis: style;">专栏</span>
+            </div>
+            <div class="columns_container">
+                <div v-for="(item,index) in columns" :key="index">
+                    <div class="columns_body">
+                        <a :href = "item.url" class="columns_icon"><img class="columns_img" :src="item.image_url"/></a>
+                        <h2 class="columns_title">{{ item.title}}</h2>
+                        <h5 class="columns_followers">{{item.followers}}&nbsp关注，{{item.articles_count}}文章</h5>
+                        <h4 class="columns_description">{{item.description}}</h4>
+                        <h4 style="margin-left:240px;margin-top: -50px">...</h4>
+                      <center >
+                        <button class="columns_into">进入专栏</button>
+                      </center>
+                </div>
+            </div>
+            </div>
+            <div align="center" style="padding-top: 10px">
+                <button style="border-radius: 25px; height: 62px; background-color: #ffffff; ">
+                    <router-link to="/special/colimns" style="color: #8590a6; font-size: 30px; text-decoration: none;">查看更多专栏></router-link>
+                </button>
+            </div>
+        </div>
     </div>
+
 </template>
 
 <script>
@@ -82,12 +107,14 @@
         data(){
             return{
                 recommoned:[],
-                favorited:[]
+                favorited:[],
+                columns:[]
             };
         },created() {
             this.axios.get('http://localhost:8080/api/special').then(res=>{
                 this.recommoned=res.data.data["special"];
                 this.favorited=res.data.data["favorite"];
+                this.columns=res.data.data["columns"];
             });
         }
     }
@@ -215,4 +242,54 @@
         margin-top: -13px;
         margin-left: 20px;
     }
+    .columns_container{
+        width:100%;
+        height:100%;
+        margin-left: 75px;
+        display: inline-grid;
+        grid-template-columns: repeat(4,20%);
+        grid-column-gap: 45px;
+        grid-auto-flow: row;
+        justify-items: stretch;
+    }
+    .columns_body{
+        align-self: center;
+        background-color: white;
+        height: 360px;
+    }
+    .columns_title{
+        text-align: center;
+    }
+    .columns_img{
+        margin-left: 100px;
+        margin-top: 10px;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+    }
+    .columns_followers{
+        text-align: center;
+        color: darkgray;
+    }
+    .columns_description{
+        max-height: 20px;
+        width: 70%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: pre-line;
+        margin: 30px;
+    }
+.columns_into{
+    width: 120px;
+    height: 34px;
+    background-color: rgba(0,132,255,.08);
+    border: solid 0 lightgray;
+    color: #0084ff;
+    font: inherit;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 600;
+    font-synthesis: style;
+    margin-bottom: 10px;
+}
 </style>
