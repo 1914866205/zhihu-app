@@ -171,7 +171,7 @@
         },
         created() {
             this.axios.get('http://localhost:8080/api/special').then(res => {
-                this.recommoned = res.data.data;
+                this.recommoned = res.data.data["special"];
             });
         }
     }

@@ -93,7 +93,7 @@
             </div>
             <div align="center" style="padding-top: 10px">
                 <button style="border-radius: 25px; height: 62px; background-color: #ffffff; ">
-                    <router-link to="/special/colimns" style="color: #8590a6; font-size: 30px; text-decoration: none;">查看更多专栏></router-link>
+                    <router-link to="/columns" style="color: #8590a6; font-size: 30px; text-decoration: none;">查看更多专栏></router-link>
                 </button>
             </div>
         </div>

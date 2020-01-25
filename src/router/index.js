@@ -10,7 +10,7 @@ import Hot from '../views/Hot.vue'
 import QuestionWaiting from '../views/QuestionWaiting.vue'
 import Login from '../views/Login.vue'
 import Favorite from '../views/Favorite.vue'
-
+import Columns from '../views/Columns'
 Vue.use(VueRouter)
 
 const routes = [
@@ -70,11 +70,15 @@ const routes = [
     {
         path: '/login',
         component: Login
+    },{
+        path:'/columns',
+        component:()=>import('../views/Columns.vue')
     }
-]
+
+];
 
 const router = new VueRouter({
     routes
-})
+});
 
 export default router
