@@ -70,7 +70,8 @@ const routes = [
     {
         path: '/login',
         component: Login
-    },{
+    },
+    {
         path:'/columns',
         component:()=>import('../views/Columns.vue')
     }
