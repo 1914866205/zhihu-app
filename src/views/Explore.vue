@@ -29,17 +29,20 @@
         <div class="container">
              <div v-for="(item,index) in recommoned" :key="index">
             <div class="body">
-             <div :style="{backgroundImage:'url('+item.banner+')'}" style="width:700px;height:200px;background-repeat: no-repeat;background-attachment: scroll;background-position:-140px -20px;">
-                <button class="guanzhu2">关注圆桌</button>
+                <div ref="box">
+                <button class="guanzhu2" ref="btn">关注圆桌</button>
                 <h3 class="title2">{{ item.title}}</h3>
+                 <img ref="bgImg" :src=item.banner style="width:700px;height:200px;background-repeat: no-repeat;background-attachment: scroll;background-position:-140px -20px;"/>
+                <div ref="mask1"></div>
+                <div ref="mask2"></div>
+                </div>
                 <div class="neirong2">
                     <small>{{item.introduction}}</small>
                 </div>
-            </div>
         </div>
             </div>
         </div>
-            <div align="center" style="padding-top: 10px">
+            <div align="center" style="padding-top: 5%">
                 <button style="border-radius: 25px; height: 62px; background-color: #ffffff; ">
                     <router-link to="/special/roundtable" style="color: #8590a6; font-size: 30px; text-decoration: none;">查看更多圆桌 ></router-link>
                 </button>
@@ -65,7 +68,7 @@
                             <h4 class="shoucangnum">已收藏{{item.total_count}}条内容&nbsp&nbsp></h4>  </div>
                 </div>
             </div>
-            <div align="center" style="padding-top: 10px">
+            <div align="center" style="padding-top:3%">
                 <button style="border-radius: 25px; height: 62px; background-color: #ffffff; ">
                     <router-link to="/special/favorite" style="color: #8590a6; font-size: 30px; text-decoration: none;">查看更多收藏 ></router-link>
                 </button>
@@ -108,13 +111,70 @@
             return{
                 recommoned:[],
                 favorited:[],
-                columns:[]
+                columns:[],
+                dominant:'',
+                secondary:''
             };
         },created() {
             this.axios.get('http://localhost:8080/api/special').then(res=>{
                 this.recommoned=res.data.data["special"];
                 this.favorited=res.data.data["favorite"];
                 this.columns=res.data.data["columns"];
+                //等页面渲染完成后再做处理
+                this.$nextTick(()=>{
+                    //获得循环中的引用对象，都将会是数组的形式
+                    let boxArr=this.$refs.box;
+                    let imgArr=this.$refs.bgImg;
+                    let btnArr=this.$refs.btn;
+                    let mask1Arr=this.$refs.mask1;
+                    let mask2Arr=this.$refs.mask2;
+              //遍历，对每个对象进行处理
+                    for (var i = 0,len=boxArr.length;i<len; i++){
+                        let box=boxArr[i];
+                        let img=imgArr[i];
+                        let btn=btnArr[i];
+                        let mask1=mask1Arr[i];
+                        let mask2=mask2Arr[i];
+                        //第三方库，可以获取图片的主色，次色等
+                        RGBaster.colors(img,{
+                            success:function (payload) {
+                                //主色
+                                this.dominant=payload.dominant;
+                                this.secondary=payload.secondary;
+                                console.log('主色：'+payload.dominant);
+                                //去掉rgb外层字母,括号，得到数字
+                                let  str=payload.dominant.substring(4,payload.dominant.length-1);
+                                //按逗号分隔，得到字符串数组
+                                let strArr=str.split(',');
+                                //分别获得r,g,b的值，并转为整型
+                                let r=parseInt(strArr[0]);
+                                let g=parseInt(strArr[1]);
+                                let b=parseInt(strArr[2]);
+                                //console.log(r+"=>"+g+"=>"+b);
+                                //定义两个透明度的值
+                                let color1='rgba(${r}),${g},${b},${a1})';
+                                let color2='rgba(${r}),${g},${b},${a2})';
+                                console.log('颜色1：'+color1);
+                                console.log('颜色2：'+color2);
+                                //圆桌卡片顶部整宽部分背景色设置为图片主色
+                                box.style.backgroundColor=this.dominant;
+                                //右侧logo覆盖两层蒙版，使用以下渐变色规则
+                                mask1.style.background='linear-gradient(to right,'+this.dominant+'0%,'+color1+'100%)';
+                                mask2.style.background='linear-gradient(to right,'+color2+'0%,'+color1+'100%)';
+                                //关注按钮的文字颜色，使用图片主色
+                                btn.style.color=this.dominant;
+
+
+
+
+
+
+                            }
+                        })
+                    }
+
+
+                })
             });
         }
     }
@@ -126,8 +186,8 @@
         margin-left: 75px;
         display: inline-grid;
         grid-template-columns: repeat(2,49%);
-        grid-row-gap: 10px;
-        grid-column-gap: 10px;
+        grid-row-gap: 8%;
+        grid-column-gap:2%;
         grid-auto-flow: row;
         justify-items: stretch;
     }
@@ -147,6 +207,7 @@
         width: 70%;
         padding-top: 1px;
         margin-left: 20px;
+        margin-top: 5%;
         color: white;
     }
     .guanzhu{
@@ -191,6 +252,7 @@
     }
     .neirong2{
         margin-left: 1%;
+        margin-top: -20%;
         width: 50%;
         color: white;
     }
@@ -202,20 +264,20 @@
 
 
     .title{
-        margin-top: 3px;
+        margin-top: 2%;
         margin-left: 22px;
     }
     .icon{
-        margin-top: 1px;
+        margin-top: 1%;
         margin-left: 22px;
     }
     .creator_name{
         margin-left:70px;
-        margin-top:-35px;
+        margin-top:-4%;
     }
     .followers{
         margin-left: 200px;
-        margin-top:-37px;
+        margin-top:-3%;
     }
     .wenzhang{
         margin-left: 295px;
@@ -224,22 +286,22 @@
         border-left: solid 1px darkgray;
     }
     .question_title{
-        margin-top: 8px;
+        margin-top: 2%;
         margin-left: 22px;
     }
     .answer_content{
         margin-left: 22px;
         font-style: oblique;
-        margin-top: 2px;
+        margin-top:3%;
         width: 92%;
         height: 50px;
     }
     .liuliang{
-        margin-top: -23px;
+        margin-top: 3%;
         margin-left: 22px;
     }
     .shoucangnum{
-        margin-top: -13px;
+        margin-top: 1%;
         margin-left: 20px;
     }
     .columns_container{

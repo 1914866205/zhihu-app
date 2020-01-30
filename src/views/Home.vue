@@ -18,13 +18,11 @@
 
         <div id="container">
             <div v-for="(item,index) in recommoned" :key="index">
-                <div id="body">
+                <div class="body">
                     <h3 id="title">{{ item.title}}</h3>
-                    <img id="image" :src="item.banner" alt="">
-                    <div id="neirong">
-                        <small>{{item.introduction}}</small>
-                    </div>
                     <p id="fangwen">{{ item.viewCount }}次浏览</p>
+                    <img id="image" :src="item.banner" alt="">
+                    <div id="neirong">{{item.introduction}}</div>
                 </div>
             </div>
         </div>
@@ -177,13 +175,14 @@
     }
 </script>
 <style>
+    @import url("../assets/css/ZhihuStyle.css");
     #Snav {
         width: 46%;
         height: 43px;
         background-color: white;
         border: 0px solid silver;
-        margin-top: 15px;
-        margin-left: 245px;
+        margin-top: 1.4%;
+        margin-left: 14.5%;
     }
 
     #tujian {
@@ -191,8 +190,8 @@
         position: absolute;
         font-weight: 600;
         font-synthesis: style;
-        left: 279px;
-        top: 85px;
+        padding-left: 2%;
+        padding-top: 0.8%;
     }
 
     #guanzhu {
@@ -200,8 +199,8 @@
         position: absolute;
         font-weight: 600;
         font-synthesis: style;
-        left: 349px;
-        top: 85px;
+        padding-left: 6%;
+        padding-top: 0.8%;
     }
 
     #rebang {
@@ -209,18 +208,18 @@
         position: absolute;
         font-weight: 600;
         font-synthesis: style;
-        left: 419px;
-        top: 85px;
+        padding-left: 10%;
+        padding-top: 0.8%;
     }
 
     #container {
         width: 46%;
         height: 100%;
         background-color: white;
-        margin-left: 245px;
+        margin-left: 14.5%;
     }
 
-    #body {
+    .body {
         width: 100%;
         height: 200px;
         border-top: 1px solid silver;
@@ -228,34 +227,38 @@
     }
 
     #title {
-        padding-top: 1px;
-        margin-left: 20px;
+        width: 100%;
+        padding-top: 2%;
+        margin-left: 2%;
     }
 
     #image {
-        margin-left: 20px;
+        padding-top: 2%;
+        margin-left: 2%;
         width: 28%;
         height: 50%;
     }
 
     #neirong {
-        margin-left: 41%;
-        margin-top: -95px;
+        margin-left: 38%;
+        margin-top: -14%;
         width: 50%;
+        font-size: 15px;
     }
 
     #fangwen {
-        margin-top: 25px;
-        margin-left: 41%;
+        margin-top: 1px;
+        margin-left: 80%;
     }
 
     #bianji {
         position: absolute;
         width: 20%;
         height: 175px;
-        left: 955px;
-        top: 75px;
+        min-width: 250px;
+        margin-left: 62%;
         border: 0px solid silver;
+        top: 75px;
         background-color: white;
     }
 
@@ -274,9 +277,10 @@
         position: absolute;
         width: 20%;
         height: 77px;
-        left: 955px;
+        margin-left: 62%;
         top: 260px;
         border: 0px solid silver;
+        min-width: 250px;
 
         display: inline-grid;
         grid-template-columns: repeat(3, 30%);
@@ -290,10 +294,11 @@
         position: absolute;
         width: 20%;
         height: 159px;
-        left: 955px;
+        margin-left: 62%;
         top: 347px;
         border: 0px solid silver;
         background-color: white;
+        min-width: 250px;
 
         display: inline-grid;
         grid-template-columns: repeat(3, 33.3%);
@@ -303,18 +308,19 @@
     }
 
     #qita {
+        min-width: 250px;
         position: absolute;
-        width: 18%;
+        width: 19%;
         height: 180px;
-        left: 955px;
+        margin-left: 62%;
         top: 549px;
         border: 0px solid silver;
         background-color: white;
 
         display: inline-grid;
-        grid-template-columns:30% 40%;
+        grid-template-columns: 30% 40%;
         padding-top: 30px;
-        padding-left: 30px;
+        padding-left: 20px;
         grid-auto-flow: row;
         justify-items: left;
         grid-column-gap: 15px;

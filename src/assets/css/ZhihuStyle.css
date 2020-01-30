@@ -12,7 +12,8 @@ body{
     /*设置body最小宽度*/
     min-width: 1024px;
     /*该方法适合于网页高度等于当前屏幕视窗高度*/
-    height: calc(100vh);
+    height: 100%;
+    /*height: calc(100vh);*/
     font-size: 15px;
     color: #1a1a1a;
 }
@@ -36,9 +37,9 @@ ul{
     height: 100%;
 }
 
-/*页面容器，80%宽度，水平居中*/
+/*页面容器，100%宽度，水平居中*/
 .container{
-    width: 80%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -882,4 +883,8 @@ inline-flex：将对象作为内联块级弹性伸缩盒显示
 
 .order-12 {
     order: 12;
+}
+.grow{
+    flex-grow:1;
+	flex-shrink:1;
 }
