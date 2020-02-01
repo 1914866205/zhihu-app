@@ -74,16 +74,15 @@
         font-size: 14px;
         font-weight: 600;
         font-synthesis: style;
-        margin-top: -25px;
-        margin-left: 25px;
+        margin-left: 2%;
+        margin-top: 2%;
     }
     .title{
-        margin-top: 28px;
-        margin-left: 25px;
+        margin-left: 2%;
     }
     .icon{
-        margin-top: 1px;
-        margin-left: 25px;
+        margin-top: 2%;
+        margin-left: 2%;
     }
     .creator_name{
         margin-left:70px;
@@ -91,7 +90,7 @@
     }
     .followers{
         margin-left: 175px;
-        margin-top:-25px;
+        margin-top:-2%x;
     }
     .wenzhang{
         margin-left: 295px;
@@ -104,16 +103,17 @@
         margin-left: 40px;
     }
     .answer_content{
+        margin-top: 2%;
         margin-left: 40px;
         font-style: oblique;
         width: 92%;
     }
     .liuliang{
-        margin-top: -17px;
+        margin-top: 2%;
         margin-left: 40px;
     }
     .shoucangnum{
-        margin-top: -13px;
+        margin-top: 2%;
         margin-left: 40px;
     }
 </style>

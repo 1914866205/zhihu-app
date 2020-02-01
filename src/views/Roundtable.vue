@@ -5,13 +5,13 @@
             <h3>圆桌</h3>
         </div>
         <div id="container">
-            <div v-for="(item,index) in specials" :key="index">
+            <div v-for="(item,index) in roundtables" :key="index">
                 <div id="body">
                     <div :style="{backgroundImage:'url('+item.banner+')'}" style="width:98%;height:200px;background-repeat: no-repeat;background-attachment: scroll;background-position:-140px -20px;">
-                    <h3 id="title">{{ item.title}}</h3>
+                    <h3 id="title">{{ item.name}}</h3>
                     </div>
                 </div>
-                <p id="fangwen">该圆桌被浏览{{ item.viewCount }}次</p>
+                <p id="fangwen">该圆桌被浏览{{ item.visits_count }}次</p>
             </div>
         </div>
     </div>
@@ -19,15 +19,15 @@
 
 <script>
     export default {
-        name: "special",
+        name: "roundtables",
         data(){
             return {
-                specials:[]
+                roundtables:[]
             };
         },
         created() {
-            this.axios.get('http://localhost:8080/api/special/all').then(res=>{
-                this.specials=res.data.data;
+            this.axios.get('http://localhost:8080/api/roundtable/all').then(res=>{
+                this.roundtables=res.data.data;
             })
         }
     }

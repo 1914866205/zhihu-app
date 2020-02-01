@@ -1,13 +1,13 @@
 <template>
     <div class="home">
     <span>
-        <div id="Snav">
+        <div class="Snav">
       <ul>
         <li id="tujian">
             <a><router-link to="/home/recommoned">推荐</router-link></a>
         </li>
         <li id="guanzhu">
-            <a><router-link to="/home/explore">关注</router-link></a>
+            <a><router-link to="/home/follow">关注</router-link></a>
         </li>
         <li id="rebang">
             <a><router-link to="/home/hot">热榜</router-link></a>
@@ -15,20 +15,8 @@
       </ul>
         </div>
     </span>
-
-        <div id="container">
-            <div v-for="(item,index) in recommoned" :key="index">
-                <div class="body">
-                    <h3 id="title">{{ item.title}}</h3>
-                    <p id="fangwen">{{ item.viewCount }}次浏览</p>
-                    <img id="image" :src="item.banner" alt="">
-                    <div id="neirong">{{item.introduction}}</div>
-                </div>
-            </div>
-        </div>
         <div id="bianji">
             <div id="grid">
-
                 <center>
                     <svg fill="currentColor" viewBox="0 0 24 24" width="24" height="24">
                         <path d="M9.273 6.13c-1.103 0-1.439.064-1.782.243a1.348 1.348 0 0 0-.576.564c-.183.336-.248.664-.248 1.743v6.64c0 1.079.065 1.407.248 1.743.135.247.323.431.576.564.343.18.68.243 1.782.243h5.454c1.103 0 1.439-.064 1.782-.243.253-.133.44-.317.576-.564.183-.336.248-.664.248-1.743V8.68c0-1.079-.065-1.407-.248-1.743a1.348 1.348 0 0 0-.576-.564c-.343-.18-.68-.243-1.782-.243H9.273zm0-1.63h5.454c1.486 0 2.025.151 2.568.436.543.284.97.7 1.26 1.232.29.532.445 1.059.445 2.512v6.64c0 1.453-.155 1.98-.445 2.512-.29.531-.717.948-1.26 1.232-.543.285-1.082.436-2.568.436H9.273c-1.486 0-2.025-.151-2.568-.436a2.997 2.997 0 0 1-1.26-1.232C5.155 17.3 5 16.773 5 15.32V8.68c0-1.453.155-1.98.445-2.512.29-.531.717-.948 1.26-1.232.543-.285 1.082-.436 2.568-.436zM8.5 8.576v1.467h7V8.576h-7zm0 2.609v1.467h7v-1.467h-7zm0 2.608v1.468h4.667v-1.468H8.5z"></path>
@@ -156,6 +144,7 @@
             </svg>
             <span>版权服务中心</span>
         </div>
+        <router-view></router-view>
     </div>
 </template>
 
@@ -168,15 +157,17 @@
             };
         },
         created() {
-            this.axios.get('http://localhost:8080/api/special').then(res => {
-                this.recommoned = res.data.data["special"];
-            });
+
         }
     }
 </script>
 <style>
     @import url("../assets/css/ZhihuStyle.css");
-    #Snav {
+    .home{
+        background-color: #f6f6f6;
+        height: 100%;
+    }
+    .Snav {
         width: 46%;
         height: 43px;
         background-color: white;
@@ -184,73 +175,30 @@
         margin-top: 1.4%;
         margin-left: 14.5%;
     }
-
     #tujian {
         list-style: none;
         position: absolute;
         font-weight: 600;
         font-synthesis: style;
-        padding-left: 2%;
+        margin-left: 2%;
         padding-top: 0.8%;
     }
-
     #guanzhu {
         list-style: none;
         position: absolute;
         font-weight: 600;
         font-synthesis: style;
-        padding-left: 6%;
+        margin-left: 6%;
         padding-top: 0.8%;
     }
-
     #rebang {
         list-style: none;
         position: absolute;
         font-weight: 600;
         font-synthesis: style;
-        padding-left: 10%;
+        margin-left: 10%;
         padding-top: 0.8%;
     }
-
-    #container {
-        width: 46%;
-        height: 100%;
-        background-color: white;
-        margin-left: 14.5%;
-    }
-
-    .body {
-        width: 100%;
-        height: 200px;
-        border-top: 1px solid silver;
-        margin-top: 10px;
-    }
-
-    #title {
-        width: 100%;
-        padding-top: 2%;
-        margin-left: 2%;
-    }
-
-    #image {
-        padding-top: 2%;
-        margin-left: 2%;
-        width: 28%;
-        height: 50%;
-    }
-
-    #neirong {
-        margin-left: 38%;
-        margin-top: -14%;
-        width: 50%;
-        font-size: 15px;
-    }
-
-    #fangwen {
-        margin-top: 1px;
-        margin-left: 80%;
-    }
-
     #bianji {
         position: absolute;
         width: 20%;
@@ -261,7 +209,6 @@
         top: 75px;
         background-color: white;
     }
-
     #grid {
         display: inline-grid;
         grid-template-columns: repeat(3, 33.3%);
@@ -272,7 +219,6 @@
         justify-items: center;
         grid-row-gap: 35px;
     }
-
     #fuwu {
         position: absolute;
         width: 20%;
@@ -281,7 +227,6 @@
         top: 260px;
         border: 0px solid silver;
         min-width: 250px;
-
         display: inline-grid;
         grid-template-columns: repeat(3, 30%);
         grid-template-rows: repeat(1, 100%);
@@ -289,7 +234,6 @@
         grid-auto-flow: row;
         justify-items: center;
     }
-
     #zhoubian {
         position: absolute;
         width: 20%;
@@ -299,14 +243,12 @@
         border: 0px solid silver;
         background-color: white;
         min-width: 250px;
-
         display: inline-grid;
         grid-template-columns: repeat(3, 33.3%);
         padding-top: 30px;
         grid-auto-flow: row;
         justify-items: center;
     }
-
     #qita {
         min-width: 250px;
         position: absolute;
@@ -316,7 +258,6 @@
         top: 549px;
         border: 0px solid silver;
         background-color: white;
-
         display: inline-grid;
         grid-template-columns: 30% 40%;
         padding-top: 30px;

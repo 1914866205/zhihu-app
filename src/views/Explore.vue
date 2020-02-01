@@ -18,7 +18,7 @@
             </div>
 
         </div>
-            <div align="center" style="padding-top: 10px">
+            <div align="center" style="padding-top: 3%">
                 <button style="border-radius: 25px; height: 62px; background-color: #ffffff; ">
                     <router-link to="/special/all" style="color: #8590a6; font-size: 30px; text-decoration: none;">查看更多专题 ></router-link>
                 </button>
@@ -27,19 +27,21 @@
         <span style="margin-left: 12px;font-size: 25px;font-weight: 600;font-synthesis: style;">圆桌讨论</span>
         <div>
         <div class="container">
-             <div v-for="(item,index) in recommoned" :key="index">
+             <div v-for="(item,index) in roundtables" :key="index">
             <div class="body">
                 <div ref="box">
                 <button class="guanzhu2" ref="btn">关注圆桌</button>
-                <h3 class="title2">{{ item.title}}</h3>
+                <h3 class="title2">{{ item.name}}</h3>
                  <img ref="bgImg" :src=item.banner style="width:700px;height:200px;background-repeat: no-repeat;background-attachment: scroll;background-position:-140px -20px;"/>
                 <div ref="mask1"></div>
                 <div ref="mask2"></div>
                 </div>
                 <div class="neirong2">
-                    <small>{{item.introduction}}</small>
+                    <img :src="roundtables.tinyBanner">
                 </div>
-        </div>
+                <p class="margin-left-1" style="color: white">{{ item.visitsCount }}次浏览<br> {{item.includeCount}}人参与</p>
+
+            </div>
             </div>
         </div>
             <div align="center" style="padding-top: 5%">
@@ -112,6 +114,7 @@
                 recommoned:[],
                 favorited:[],
                 columns:[],
+                roundtables:[],
                 dominant:'',
                 secondary:''
             };
@@ -120,6 +123,7 @@
                 this.recommoned=res.data.data["special"];
                 this.favorited=res.data.data["favorite"];
                 this.columns=res.data.data["columns"];
+                this.roundtables=res.data.data["roundtable"];
                 //等页面渲染完成后再做处理
                 this.$nextTick(()=>{
                     //获得循环中的引用对象，都将会是数组的形式
