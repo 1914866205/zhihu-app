@@ -241,6 +241,8 @@
                 const regex=new RegExp('<img','gi');
                 for (var i = 0; i < this.recommendList.length; i++) {
                     //给每篇文章添加一个标记，用来处理展开全文，默认为false,表示未展开全文
+                    this.flags.splice(i,0,false);
+                    //将富文本中的图片处理大小
                     this.recommendList[i].target.content=this.recommendList[i].target.content.replace(regex,'<img style="max-width:100%;height:auto"');
                 }
             });
