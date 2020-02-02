@@ -4,7 +4,7 @@ import Nav from '../views/Nav.vue'
 import Home from '../views/Home.vue'
 import Explore from '../views/Explore.vue'
 import Special from '../views/Special.vue'
-import Recommoned from '../views/Recommoned.vue'
+import Recommoned from '../views/Recommened.vue'
 import Follow from '../views/Follow.vue'
 import Hot from '../views/Hot.vue'
 import QuestionWaiting from '../views/QuestionWaiting.vue'
@@ -28,11 +28,11 @@ const routes = [
                 children: [
                     {
                         path: '/',
-                        redirect: 'recommoned'
+                        redirect: 'recommened'
                     },
                     {
-                        path: 'recommoned',
-                        component: () => import('../views/Recommoned.vue')
+                        path: 'recommened',
+                        component: () => import('../views/Recommened.vue')
                     },
 
                     {

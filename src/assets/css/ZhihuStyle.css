@@ -888,3 +888,74 @@ inline-flex：将对象作为内联块级弹性伸缩盒显示
     flex-grow:1;
 	flex-shrink:1;
 }
+
+a:link{
+    font-style: inherit;
+    color: #8590a6;
+    height: 24px;
+    font-size: 18px;
+}
+a:visited{
+    font-style: inherit;
+    color: #8590a6;
+    height: 24px;
+    font-size: 18px;
+}
+a:hover{
+    font-style: inherit;
+    border-bottom: solid dodgerblue 5px;
+    color: black;
+    height: 24px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+a:active{
+    font-style: inherit;
+    margin-bottom: 6px;
+    color: black;
+    height: 24px;
+    font-size: 18px;
+}
+.read-more {
+    position: relative;}
+.deep-blue-icon {
+    position: absolute;
+    bottom: -2px;
+}
+.avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.sticky-bar {
+    position: sticky;
+    bottom: 0;
+    z-index: 1000;
+    background-color: #fff;
+}
+.active {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+.up {
+    transform: rotate(180deg);
+}
+.elilsis-4{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+.elilsis-2{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}

@@ -111,7 +111,7 @@
         name: "recommoned",
         data(){
             return{
-                recommoned:[],
+                recommened:[],
                 favorited:[],
                 columns:[],
                 roundtables:[],

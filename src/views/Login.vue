@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="login-bar tx-center">
-            <router-link to="/">
+            <router-link  style="border: 0px"to="/">
                 <img src="../assets/image/zhihuicon.jpg" class="logo"/>
             </router-link>
         </div>

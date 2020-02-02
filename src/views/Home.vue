@@ -4,7 +4,7 @@
         <div class="Snav">
       <ul>
         <li id="tujian">
-            <a><router-link to="/home/recommoned">推荐</router-link></a>
+            <a><router-link to="/home/recommened">推荐</router-link></a>
         </li>
         <li id="guanzhu">
             <a><router-link to="/home/follow">关注</router-link></a>
@@ -153,7 +153,7 @@
         name: 'recommoned',
         data() {
             return {
-                recommoned: []
+                recommened: []
             };
         },
         created() {
