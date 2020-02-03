@@ -87,12 +87,13 @@
                 <h3 v-else class="m-2">{{item.target.question.title}}</h3>
                 <div v-if="!flags[index]">
 <!--                    flags==false，则!flags==true,则不打开-->
+<!--                        将对象作为弹性伸缩盒显示-->
                     <div class="display-flex padding-2" v-if="item.target.thumbnail">
+<!--                            如果有图，文字占4行-->
                         <div class="col-3 mr-3">
                             <img :src="item.target.thumbnail" class="fill tiny-round"/>
                         </div>
                         <div class="col-9">
-<!--                            如果有图，文字占4行-->
                             <p class="elilsis-4 padding-right-2" style="width: 92%">{{item.target.author.name}}:{{item.target.excerpt}}</p>
                            <span class="read-more link" @click="change(index)">
                             <span class="deep-blue">阅读全文</span>
@@ -120,13 +121,13 @@
 
                 <!--点击"阅读全文"显示-->
                 <div v-if="flags[index]" class="padding-2">
-                    <div class="display-inline">
-                        <img :src="item.target.author.avatar_url" class="avatar mr-2"/>
-                        <h4 class="mr-2">{{item.target.author.name}}</h4>
-                        <span>{{item.target.author.headline}}</span>
+                    <div>
+                        <img class="avatar mr-2 display-inline":src="item.target.author.avatar_url" />
+                        <h4 class="margin-left-1 margin-right-3 mr-2 display-inline">{{item.target.author.name}}</h4>
+                        <span class="margin-left-1 display-inline">{{item.target.author.headline}}</span>
+                         <p class="margin-left-1 light-grey  display-inline mt-2 mb-2">{{item.target.voteup_count}}人赞同了该回答</p>
                     </div>
-                    <p class="light-grey  mt-2 mb-2">{{item.target.voteup_count}}人赞同了该回答</p>
-                    <div v-html="item.target.content"class="justify-content-around"></div>
+                    <div v-html="item.target.content"class="mt-1 justify-content-around"></div>
                 </div>
 
 
@@ -147,7 +148,7 @@
                         </svg>
                     </button>
 
-                    <p class="link display-inline margin-left-1 fontGray">
+                    <p class="link display-inline fontGray margin-left-1" >
                         ​
                         <svg fill="currentColor" viewBox="0 0 24 24"
                              width="1.2em" height="1.2em">
@@ -157,7 +158,7 @@
                         </svg>
                         {{item.target.comment_count}}条评论
                     </p>
-                    <p class="link display-inline margin-left-1 fontGray">
+                    <p class="link display-inline fontGray "style="margin-left: 8px">
                         ​
                         <svg
                                 fill="currentColor" viewBox="0 0 24 24"
@@ -168,7 +169,7 @@
                         </svg>
                         分享
                     </p>
-                    <p class="link display-inline margin-left-1 fontGray">
+                    <p class="link display-inline  fontGray"style="margin-left: 8px">
                         <svg
                                 fill="currentColor" viewBox="0 0 24 24"
                                 width="1.2em" height="1.2em">
@@ -178,7 +179,7 @@
                         </svg>
                         收藏
                     </p>
-                    <p class="link display-inline margin-left-1 fontGray">
+                    <p class="link display-inline  fontGray" style="margin-left: 8px">
                         <svg
                                 class="Zi Zi--Heart Button-zi" fill="currentColor" viewBox="0 0 24 24"
                                 width="1.2em" height="1.2em">
@@ -188,7 +189,7 @@
                         </svg>
                         喜欢
                     </p>
-                        <div class="link display-inline margin-left-1 fontGray" v-if="flags[index]">
+                        <div class="link display-inline  fontGray" v-if="flags[index]" style="margin-left: 8px">
                         <span class="read-more link" @click="change(index)">
                             <svg class="grey-icon up" viewBox="0 0 24 24" width="24" height="24">
                                 <path
@@ -201,7 +202,7 @@
                         </p>
                         </span>
                         </div>
-                    <p class="link display-inline margin-left-1 fontGray">
+                    <p class="link display-inline  fontGray"style="margin-left: 8px">
                         <svg
                                 fill="currentColor" viewBox="0 0 24 24"
                                 width="1.2em" height="1.2em">

@@ -30,9 +30,9 @@
              <div v-for="(item,index) in roundtables" :key="index">
             <div class="body">
                 <div ref="box">
-                <button class="guanzhu2" ref="btn">关注圆桌</button>
+                <button class="guanzhu2" style="margin-left: 35%" ref="btn">关注圆桌</button>
                 <h3 class="title2">{{ item.name}}</h3>
-                 <img ref="bgImg" :src=item.banner style="width:700px;height:200px;background-repeat: no-repeat;background-attachment: scroll;background-position:-140px -20px;"/>
+                 <img ref="bgImg" :src=item.banner style="margin-left: 50%;width:50%;margin-top:-13%;height:255px;background-repeat: no-repeat;background-attachment: scroll;background-position:-140px -20px;"/>
                 <div ref="mask1"></div>
                 <div ref="mask2"></div>
                 </div>

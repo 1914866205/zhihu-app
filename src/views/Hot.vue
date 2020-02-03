@@ -2,9 +2,16 @@
     <div id="body">
         <div>
             <div id="container">
+<!--                    //动态样式绑定  如果cur==index  添加class  active-->
+                <div class="Tnav" style="justify-content: space-around">
+
+                    <div v-for="(item,index) in tabTitle"@click="change(index)" :class="{Hactive:cur==index}":key="index">
+                            <button class="btntitle mt-1" >{{item}}</button>
+                </div>
+                </div>
                 <div v-for="(item,index) in columns" :key="index">
                     <div id="bodyH">
-                        <h1 class="display-inline Hindex padding-right-3 padding-left-3 ">{{1+index}}</h1>
+                        <h1 class="display-inline Hindex padding-right-3 padding-left-3" :class="{top:index<3}">{{1+index}}</h1>
                         <h2 class="display-inline Ht">{{ item.title}}</h2>
                         <p class="Hd">{{item.description}}</p>
                         <h2 style="margin-left: 7%">...</h2>
@@ -31,19 +38,45 @@
         name: 'Hot',
         data() {
             return {
+                tabTitle:['全站','科学','数码','体育','时尚','影视','校园','汽车'],
+                category:['total','science','digital','sport','fashion','film','shcool','car'],
+                tabContent:[[],[],[],[],[],[],[],[]],
+                cur:0,
                 columns: []
             };
         },
         created() {
             this.axios.get('http://localhost:8080/api/columns/all').then(res => {
                 this.columns = res.data.data;
+                this.tabContent.splice(0,0,res.data.data.data);
             });
+        },methods:{
+            change(index){
+                this.cur=index;
+                //取出对应的参数数组的值
+                let param=this.category[index];
+                //发起对应的参数数组的值
+                this.axios.get('/api/hot-lists'+param).then(res=>{
+                    this.tabContent.splice(index,0,res.data.date.data);
+                });
+                //全部
+                if (param=='total'){
+                    this.$router.push('/home/hot');
+                } else {
+                    this.$router.push('/home/hot?list='+param);
+                }
+            }
         }
     }
 </script>
 <style>
     @import url("../assets/css/ZhihuStyle.css");
 
+    /*.body {*/
+    /*    width: 100%;*/
+    /*    height: 200px;3        border-top: 1px solid silver;*/
+    /*    margin-top: 10px;*/
+    /*}*/
     #container {
         width: 46%;
         height: 100%;
@@ -51,12 +84,20 @@
         margin-left: 14.5%;
     }
 
-    /*.body {*/
-    /*    width: 100%;*/
-    /*    height: 200px;*/3    /*    border-top: 1px solid silver;*/
-    /*    margin-top: 10px;*/
-    /*}*/
-
+    .Tnav{
+        flex: auto;
+        width: 46%;
+        height:80px;
+        margin-top: -6%;
+        background-color: white;
+        position: absolute;
+        display: inline-grid;
+        grid-template-columns: repeat(4, 21%);
+        grid-row-gap: 1.5%;
+        grid-template-rows: repeat(2,45%);
+        grid-auto-flow: row;
+        justify-items: center;
+    }
     .Ht{
         width: 100%;
         padding-top: 3%;
@@ -70,7 +111,7 @@
         height: 100px;
     }
 
-    .Hd {
+    .Hd{
         padding-top: 1%;
         margin-left: 7%;
         max-height: 20px;
@@ -85,8 +126,30 @@
     }
 #bodyH{
     width: 100%;
-    height:150px;
+    height:70px;
     border-top: 1px solid silver;
-    margin-top: 10px;
+    margin-top: 15%;
 }
+    .top{
+        color: orangered;
+    }
+    .btntitle{
+        width: 100px;
+        height: 34px;
+        display: inline-block;
+        background-color: rgba(0,132,255,.08);
+        border: solid 0 lightgray;
+        color: black;
+        font: inherit;
+        border-radius: 3px;
+        font-size: 14px;
+        font-weight: 600;
+        font-synthesis: style;
+        float: right;
+        cursor: pointer;
+    }
+    .Hactive{
+        background-color: #b8e5f8;
+        border: 0;
+    }
 </style>

@@ -10,7 +10,7 @@
                         <p class="mt-3 display-inline fontGray">CPA,法律职业资格</p>
                         <h2 class="margin-left-1 mt-3">{{item.question_title}}</h2>
                         <h3 class="margin-left-1 mt-3 " style="width: 90%">{{item.answer_content}}</h3>
-                        <button class="link guanzhu display-inline">
+                        <button class="link guanzhu display-inline "style="margin-left: 8%">
                             <svg fill="currentColor" viewBox="0 0 24 24" width="10" height="10">
                                 <path
                                         d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z"
@@ -28,7 +28,7 @@
                             </svg>
                         </button>
 
-                        <p class="link display-inline margin-left-1 fontGray">
+                        <p class="link display-inline  fontGray">
                             ​
                             <svg fill="currentColor" viewBox="0 0 24 24"
                                  width="1.2em" height="1.2em">
@@ -38,7 +38,7 @@
                             </svg>
                             {{item.comment_count}}条评论
                         </p>
-                        <p class="link display-inline margin-left-1 fontGray">
+                        <p class="link display-inline  fontGray"style="margin-left: 8px">
                             ​
                             <svg
                                     fill="currentColor" viewBox="0 0 24 24"
@@ -49,7 +49,7 @@
                             </svg>
                             分享
                         </p>
-                        <p class="link display-inline margin-left-1 fontGray">
+                        <p class="link display-inline  fontGray"style="margin-left: 8px">
                             <svg
                                     fill="currentColor" viewBox="0 0 24 24"
                                     width="1.2em" height="1.2em">
@@ -59,7 +59,7 @@
                             </svg>
                             收藏
                         </p>
-                        <p class="link display-inline margin-left-1 fontGray">
+                        <p class="link display-inline  fontGray"style="margin-left: 8px">
                             <svg
                                     class="Zi Zi--Heart Button-zi" fill="currentColor" viewBox="0 0 24 24"
                                     width="1.2em" height="1.2em">
@@ -69,7 +69,7 @@
                             </svg>
                             喜欢
                         </p>
-                        <p class="link display-inline margin-left-1 fontGray">
+                        <p class="link display-inline  fontGray"style="margin-left: 8px">
                             <svg
                                   fill="currentColor" viewBox="0 0 24 24"
                                     width="1.2em" height="1.2em">
@@ -119,7 +119,7 @@
     }
 
     .margin-left-1 {
-        margin-left: 2%;
+        margin-left: 3%;
     }
 
     .fontGray {

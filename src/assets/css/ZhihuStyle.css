@@ -903,11 +903,9 @@ a:visited{
 }
 a:hover{
     font-style: inherit;
-    border-bottom: solid dodgerblue 5px;
     color: black;
-    height: 24px;
-    font-size: 18px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 
@@ -918,8 +916,10 @@ a:active{
     height: 24px;
     font-size: 18px;
 }
+
 .read-more {
-    position: relative;}
+    position: relative;
+}
 .deep-blue-icon {
     position: absolute;
     bottom: -2px;
