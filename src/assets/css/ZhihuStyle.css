@@ -819,8 +819,8 @@ inline-flex：将对象作为内联块级弹性伸缩盒显示
 .blue-txt-btn {
     height: 35px;
     border-radius: 5px;
-    background-color: #ecf6ff;
-    color: #0c89ff;
+    background-color: #0084ff;
+    color:white;
 }
 
 
@@ -933,7 +933,7 @@ a:active{
 .sticky-bar {
     position: sticky;
     bottom: 0;
-    z-index: 1000;
+    z-index: 100;
     background-color: #fff;
 }
 .active {

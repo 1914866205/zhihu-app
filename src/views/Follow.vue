@@ -106,9 +106,10 @@
 
     #container {
         width: 46%;
-        height: 100%;
-        background-color: white;
+        height: 90%;
+        margin-top: -58.3%;
         margin-left: 14.5%;
+        background-color: white;
     }
 
     .body {

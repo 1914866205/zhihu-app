@@ -1,7 +1,7 @@
 <template>
     <div id="body">
         <div>
-            <div id="container">
+            <div id="Hcontainer">
 <!--                    //动态样式绑定  如果cur==index  添加class  active-->
                 <div class="Tnav" style="justify-content: space-around">
 
@@ -77,9 +77,10 @@
     /*    height: 200px;3        border-top: 1px solid silver;*/
     /*    margin-top: 10px;*/
     /*}*/
-    #container {
+    #Hcontainer {
         width: 46%;
-        height: 100%;
+        height: 90%;
+        margin-top:-58.3%;
         background-color: white;
         margin-left: 14.5%;
     }
