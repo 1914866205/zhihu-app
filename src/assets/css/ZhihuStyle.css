@@ -798,10 +798,12 @@ inline-flex：将对象作为内联块级弹性伸缩盒显示
 }
 
 /* 图标填充 */
-.grey-icon {
+.grey-icong {
     fill: #8591a7;
 }
-
+.grey-iconr {
+    fill: red;
+}
 .blue-icon {
     fill: #0c89ff;
 }
@@ -823,7 +825,9 @@ inline-flex：将对象作为内联块级弹性伸缩盒显示
     color:white;
 }
 
-
+.card {
+    min-height: 200px;
+}
 /* flex元素在父容器中的显示顺序 */
 .order-first {
     order: -1;

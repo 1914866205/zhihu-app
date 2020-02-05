@@ -168,6 +168,9 @@
                 <a>
                     <span style="margin-left: -30px">我的收藏</span>
                 </a>
+                <span class="massage" v-show="this.$store.state.token">5</span>
+                <span v-if="!this.$store.state.token"></span>
+
                 <a>
                     <svg fill="currentColor" viewBox="0 0 24 24"
                          width="18" height="18">
@@ -178,6 +181,7 @@
                 <a>
                     <span style="margin-left: -30px">我关注的问题</span>
                 </a>
+                <span>7</span>
                 <a>
                     <svg fill="currentColor" viewBox="0 0 24 24"
                          width="18" height="18">
@@ -188,6 +192,9 @@
                 <a>
                     <span style="margin-left: -30px">我的邀请</span>
                 </a>
+                <span class="massage" v-show="token">4</span>
+                <span v-if="!token"></span>
+
                 <a>
                     <svg fill="currentColor" viewBox="0 0 24 24"
                          width="18" height="18">
@@ -195,9 +202,11 @@
                               fill-rule="evenodd"></path>
                     </svg>
                 </a>
+
                 <a>
                     <span style="margin-left: -30px">站务中心</span>
                 </a>
+                <span>1</span>
                 <a>
                     <svg fill="currentColor" viewBox="0 0 24 24"
                          width="18" height="18">
@@ -208,6 +217,8 @@
                 <a>
                     <span style="margin-left: -30px">版权服务中心</span>
                 </a>
+                <span>3</span>
+
             </div>
             <div id="connection">
             <div class="display-inline mt-2">
@@ -360,7 +371,7 @@
         border: 0px solid silver;
         background-color: white;
         display: inline-grid;
-        grid-template-columns: 30% 40%;
+        grid-template-columns: 30% 40% 30%;
         padding-top: 30px;
         padding-left: 20px;
         grid-auto-flow: row;
@@ -386,5 +397,13 @@
         color: black;
         font-weight: 600;
         border-bottom: solid 4px red;
+    }
+    .massage{
+        margin-left:-20px;
+        text-align:center;
+        background-color: #f6f6f6;
+        height:20px;
+        width: 40px;
+        color: black
     }
 </style>
