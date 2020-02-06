@@ -4,13 +4,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        token: '111',
+        token:true,
         baseUrl: 'http://localhost:9090/api',
         user: {
             id: 1,
-            url: 'tao-ran-ran-42',
-            nickname: '小胖胖',
-            avatar: 'https://niit-soft.oss-cn-hangzhou.aliyuncs.com/avatar/me.jpg'
+            url: 'ntt',
+            nickname: '小胖',
+            avatar: 'https://pic1.zhimg.com/v2-4673ae105cb32dbc5471e77660eaf950_im.jpg'
         }
     },
     mutations: {

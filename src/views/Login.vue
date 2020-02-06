@@ -2,7 +2,7 @@
     <div>
         <div class="login-bar tx-center Loginbody">
             <router-link style="border: 0px" to="/">
-                <img src="../assets/image/zhihuicon.jpg" class="logo"/>
+                <img @click="login" src="../assets/image/zhihuicon.jpg" class="logo"/>
             </router-link>
 
             <div class="Lbody">
@@ -143,6 +143,9 @@
         }, methods: {
             change() {
                 this.action = !this.action;
+            },
+            login(){
+                this.$store.state.token=!this.$store.state.token;
             }
         }
     }
