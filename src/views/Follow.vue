@@ -191,7 +191,7 @@
     #container {
         width: 46%;
         height: 90%;
-        margin-top: -60.3%;
+        margin-top: -66.3%;
         margin-left: 14.5%;
         background-color: white;
     }

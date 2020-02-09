@@ -256,9 +256,9 @@
         display: flex;
         align-items: center;
         height: 40px;
-        width: 680px;
+        width: 44.5%;
         padding: 0.625rem;
-        margin-top: -57%;
+        margin-top: -67%;
         margin-left: 14.5%;
         background-color: #fff;
 
@@ -310,7 +310,7 @@
     }
 
     .hotbody {
-        width: 700px;
+        width: 46%;
         height: 150px;
         margin-left: 14.5%;
         margin-top: 1%;

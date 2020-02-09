@@ -264,7 +264,7 @@
     #Rcontainer {
         width: 46%;
         height: 90%;
-        margin-top: -58%;
+        margin-top: -65%;
         margin-left: 14.5%;
     }
 

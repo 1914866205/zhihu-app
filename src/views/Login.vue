@@ -1,9 +1,10 @@
 <template>
     <div>
         <div class="login-bar tx-center Loginbody">
-            <router-link style="border: 0px" to="/">
-                <img @click="login" src="../assets/image/zhihuicon.jpg" class="logo"/>
-            </router-link>
+<!--            <router-link style="border: 0px" to="/">-->
+<!--                <img @click="login" src="../assets/image/zhihuicon.jpg" class="logo"/>-->
+<!--            </router-link>-->
+                <img src="../assets/image/zhihuicon.jpg" class="logo"/>
 
             <div class="Lbody">
                 <div>
@@ -37,12 +38,14 @@
                     <div v-show="action">
                         <br>
                         <br>
-                        <input class="display-inline" style="border-bottom:solid 2px black;width:80%;height:20px"
+                        <input v-model="username" class="display-inline"
+                               style="border-bottom:solid 2px black;width:80%;height:20px"
                                placeholder="手机号或邮箱"/>
                         <br>
                         <br>
                         <br>
-                        <input type="password" class="display-inline"
+                        <!--                        <input @change="getpassword"  type="password" class="display-inline"-->
+                        <input v-model="password" type="password" class="display-inline"
                                style="border-bottom:solid 2px black;width:75%;height:20px" placeholder="密码"/>
                         <button tabindex="-1" type="button" class="Button SignFlow-switchPassword Button--plain">
                             <svg width="24" height="20" viewBox="0 0 24 24"
@@ -63,7 +66,7 @@
                 </div>
                 <br>
                 <br>
-                <button class="loginbtn">注册/登录</button>
+                <button class="loginbtn" @click="login">注册/登录</button>
                 <br>
                 <br>
                 <div style="background-color: #f6f6f6;height: 80px">
@@ -136,7 +139,10 @@
                     value: 3
                 }, {name: '中国台湾 +886', value: 4}],
                 selected: 1,
-                action: false
+                action: false,
+                username: "",
+                password: "",
+                email: "",
             }
         },
         created() {
@@ -144,8 +150,43 @@
             change() {
                 this.action = !this.action;
             },
-            login(){
-                this.$store.state.token=!this.$store.state.token;
+            // getpassword:function(e){
+            //     alert(e.target.value);
+            // },
+            login() {
+                var mogex = /[1-9][0-9]{10}/;
+                var emgex = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+                if (mogex.test(this.username) || emgex.test(this.username)) {
+                    // $.ajax({
+                    //     url: "/",
+                    //     type: "post",
+                    //     data: {
+                    //         "username":this.username,
+                    //         "password":this.password,
+                    //     },
+                    //     dataType: 'json',
+                    //     success: function (stock) {
+                    //         if (stock == null) {
+                    //             return;
+                    //         } else {
+                    //             this.$router.push({path: '/'});
+                    //         }
+                    //     }
+                    // });
+                    if (this.username===this.$store.state.user.mobile || this.username===this.$store.state.user.email){
+                        if (this.password===this.$store.state.user.password) {
+                            this.$router.push({path: '/'});
+                        } else {
+                            alert("账号或密码错误");
+                        }
+                    } else {
+                        alert("账号或密码错误");
+                    }
+                } else {
+                    alert("手机号或邮箱格式错误");
+                }
+                this.$store.state.token = !this.$store.state.token;
+
             }
         }
     }
